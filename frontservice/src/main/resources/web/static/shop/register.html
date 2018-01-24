@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="shop.css"/>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("loginbut").click(function(){
+                var name = $("[name='name']").val();
+                var nameret = /^[a-zA-Z][a-zA-Z0-9_]{5,20}$/;
+                if(nameret.test(name)){
+                    alert('用户名不能使用特殊字符');
+                    return;
+                }
+                var password = $("[name='password']").val();
+                if(nameret.test(password)){
+                    alert('密码不能使用特殊字符');
+                    return;
+                }
+                var sex = $("[name='sex']:checked").val();
+                var phone = $("[name='phone']").val();
+                var phoneret = /^1[34578]\d{9}$/;
+                if(phoneret.test(phone)){
+                    alert("手机号码错误");
+                    return;
+                }
+                var address = $("[name='address']").val();
+                if(address==''||address==null){
+                    alert('地址不能为空');
+                    return;
+                }
+                if(name!=null&&password!=null){
+                    $.post("shop/register.do",
+                        {
+                            name:name,
+                            password:password,
+                            sex:sex,
+                            phone:phone,
+                            address:address
+                        },
+                        function(data){
+                            if(data["code"] != 1){
+                                alert("注册失败，用户名重复");
+                            }else if(data["code"] == 1){
+                                document.href = "index.jsp";
+                            }
+                        });
+                }else{
+                    alert("注册失败！！");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="center">
+    <h3>用户注册</h3>
+    <span>用户名：</span><input type="text" name="name"><br>
+    <span>密码：</span><input type="password" name="password"><br>
+    <span>性别：</span>男<input type="radio" checked="checked" name="sex" value="0">&nbsp;&nbsp;&nbsp;女<input type="radio" name="sex" value="1"><br>
+    <span>手机号：</span><input type="text" name="phone"><br>
+    <span>地址：</span><input type="text" name="address"><br>
+    <button class="loginbut">注册</button>
+</div>
+</body>
+</html>

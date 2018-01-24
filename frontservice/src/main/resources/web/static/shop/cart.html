@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        table{
+            border:1px solid #955a45;
+        }
+        tr{
+            border-top: 1px solid #955a45;
+        }
+        td{
+            width:120px;
+            border-right:1px solid #955a45;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".subtract").click(function(){
+                var tr = $(this).parents("tr");
+                tr.find(".number").val(tr.find(".number").val()-1);
+                changeCartNumber(tr);
+            });
+            $(".add").click(function(){
+                var tr = $(this).parents("tr");
+                tr.find(".number").val(tr.find(".number").val()+1);
+                changeCartNumber(tr);
+            });
+            function changeCartNumber(tr){
+                var tr = $(tr);
+                var price = tr.find(".sellingPrice").attr("price");
+                var number = tr.find(".number").val();
+                var price_1 = tr.find(".price").html(number*price);
+                var ppp = $(".table").find(".price");
+                var totalprice = 0.00;
+                for(var i=0;i<ppp.length;i++){
+                    console.info($(ppp[i]).html());
+                    totalprice+=parseFloat($(ppp[i]).html());
+                    console.info(totalprice);
+                }
+                $(".totalprice").html(totalprice);
+            }
+        });
+
+
+    </script>
+</head>
+<body style="background-color: beige">
+<div style="float:left;margin-left: 300px;width:600px">
+<div style="background-color: red;width:100%"><h3>购物车</h3></div>
+    <div style="">
+        <table class="table">
+            <tr><td style="width:60px">图片</td><td>商品名</td><td style="width:60px">单价</td><td style="width:80px">数量</td><td style="width:60px">金额</td></tr>
+            <tr><td  style="width:60px"><img width="60px" height="60px" src="../image/1.jpg"/></td><td><span style="color: darkgoldenrod"><b>电阻</b></span></td><td style="width:60px" class="sellingPrice" price="0.51">￥0.51</td><td style="width:80px"><span style="font-weight:bold;" class="subtract">-</span><span style="margin-left: 5px;margin-right: 5px"><input style="width:30px" type="text" value="200" class="number"></span><span style="font-weight:bold;">+</span></td><td style="width:60px"><span style="color: red" class="price">￥102.00</span></td></tr>
+            <tr><td  style="width:60px"><img width="60px" height="60px" src="../image/2.jpg"/></td><td><span style="color: darkgoldenrod"><b>10k欧b型单连</b></span></td><td style="width:60px">￥0.01</td><td style="width:80px"><span style="font-weight:bold;">-</span><span style="margin-left: 5px;margin-right: 5px"><input style="width:30px" type="text" value="200"></span><span style="font-weight:bold;">+</span></td><td style="width:60px"><span style="color: red">￥2.00</span></td></tr>
+            <tr><td  style="width:60px"><img width="60px" height="60px" src="../image/5.png"/><td><span style="color: darkgoldenrod"><b>ADF4360-9BCPZ</b></span></td></td><td style="width:60px">￥43.26</td><td style="width:80px"><span style="font-weight:bold;">-</span><span style="margin-left: 5px;margin-right: 5px"><input style="width:30px" type="text" value="200"></span><span style="font-weight:bold;">+</span></td><td style="width:60px"><span style="color: red">￥8652.00</span></td></tr>
+        </table>
+    </div>
+    <div style="margin-left: 300px;margin-top: 20px;">合计总价格：<span style="color: red;font-weight:bold;" class="totalprice">￥8756.00</span></div>
+    <div  style="margin-left: 300px;margin-top: 20px;"><button style="background-color:#955a45;height:35px;width: 70px;border-radius:12px;">继续购物</button><button style="background-color:red;height:35px;width: 90px;border-radius:12px;">收银台结账</button></div>
+</div>
+
+</body>
+</html>

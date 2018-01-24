@@ -1,0 +1,9 @@
+div.center{
+    position: fixed;
+    top: 38%;
+    left: 38%;
+    /*-webkit-transform: translateX(-50%) translateY(-50%);*/
+}
+body{
+    background-color: beige;
+}

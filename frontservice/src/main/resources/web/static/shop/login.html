@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="shop.css"/>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("loginbut").click(function(){
+                var name = $("[name='name']").val();
+                var password = $("[name='password']").val();
+                if(name!=null&&password!=null){
+                        $.post("shop/login.do",
+                        {
+                            name:name,
+                            password:password
+                        },
+                        function(data){
+                            if(data["code"] != 1){
+                                //alert("登录名或登录密码不完整");
+                            }else if(data["code"] == 1){
+                                document.href = "index.jsp";
+                            }
+                        });
+                }else{
+                    alert("登录名或登录密码不完整！！");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="center">
+    <h3>后台用户登录</h3>
+    <input type="text" name="name"/>
+    <br>
+    <input type="password" name="password"/>
+    <br/>
+    <br/>
+    <button class="loginbut">登录</button>&nbsp;&nbsp;&nbsp;&nbsp;<button>取消</button>
+</div>
+</body>
+</html>
