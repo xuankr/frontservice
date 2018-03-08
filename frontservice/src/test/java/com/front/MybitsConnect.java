@@ -1,9 +1,8 @@
 package com.front;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 import com.front.dao.UserDao;
-import com.front.entity.IUser;
+
 import com.front.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,10 +29,10 @@ public class MybitsConnect {
             userMapper.insert(user);
             System.out.println("添加iuser类成功");
             */
-            System.out.println(userdao.getAll());
+            /*System.out.println(userdao.getAll());
             PageHelper.startPage(2,2);
             PageInfo infopage = new PageInfo<IUser>(userService.getAll());
-            System.out.println("********    "+infopage);
+            System.out.println("********    "+infopage);*/
         }
 
     }

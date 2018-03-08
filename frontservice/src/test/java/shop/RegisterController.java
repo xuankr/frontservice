@@ -22,9 +22,9 @@ public class RegisterController extends HttpServlet {
         Integer sex = (Integer)req.getAttribute("sex");
         Integer phone = (Integer)req.getAttribute("phone");
         String address = (String)req.getAttribute("address");
-        if(userService.findName(name)==null){
+       /* if(userService.findName(name)==null){
             i = userService.regiest(name,pwd,sex,phone,address);
-        }
+        }*/
         resp.getWriter().print("{\'code\':"+i+"}");
     }
     @Override

@@ -1,17 +1,17 @@
 package com.front.web;
 
+import com.front.common.Resuful.ResufulObj;
+import com.front.common.Resuful.StateEnum;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.front.common.Resuful.ResufulObj;
-import com.front.common.Resuful.StateEnum;
-import com.front.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 /**
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "测试服务类",description = "测试功能",tags={"测试接口"})
 @RestController
-@RequestMapping("/test")
-public class TestControl {
-    private final static Logger logger = LoggerFactory.getLogger(TestControl.class);
+@RequestMapping("/secure")
+public class SecureController {
+    private final static Logger logger = LoggerFactory.getLogger(SecureController.class);
     /*@Autowired
     UserService userService;*/
 
